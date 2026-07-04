@@ -121,17 +121,18 @@ namespace Harmony
             {
                 if (chkSubliminal.Checked)
                 {
-                    _trkVolume.Value = 2;
-                    _trkVolume.Maximum = 5;
+                    _trkVolume.Value = 1;
+                    _trkVolume.Maximum = 3;
                     _trkVolume.Enabled = false;
-                    _lblVolume.Text = "2% (subliminal)";
-                    if (_generator.IsPlaying) _generator.SetVolume(0.02f);
+                    _lblVolume.Text = "0.2% (subliminal)";
+                    if (_generator.IsPlaying) _generator.SetVolume(0.002f);
                 }
                 else
                 {
                     _trkVolume.Maximum = 100;
                     _trkVolume.Enabled = true;
                     _lblVolume.Text = $"{_trkVolume.Value}%";
+                    if (_generator.IsPlaying) _generator.SetVolume(_trkVolume.Value / 100f);
                 }
             };
             Controls.Add(chkSubliminal);
